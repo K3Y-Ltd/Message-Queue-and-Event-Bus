@@ -1,0 +1,19 @@
+version: "3"
+services:
+  kafka:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      # SSL port
+      - "9093:9093"
+      # Plaintext port
+      - "9094:9094"
+      # zookeeper
+      - "2181:2181"
+    init: true
+    environment:
+      PASSWORD: ${KAFKA_PASSWORD}
+      # This can be domain name or IP address
+      DOMAIN: ${KAFKA_DOMAIN}
+    container_name: kafkassl

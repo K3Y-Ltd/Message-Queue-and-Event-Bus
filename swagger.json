@@ -1,0 +1,201 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "FastAPI",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Healthcheck",
+                "description": "Check if the ADMIN REST API is running",
+                "operationId": "healthcheck__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/kafka/topics": {
+            "get": {
+                "tags": [
+                    "kafka",
+                    "kafka"
+                ],
+                "summary": "List Topics",
+                "description": "List all Kafka topics",
+                "operationId": "list_topics_kafka_topics_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "kafka",
+                    "kafka"
+                ],
+                "summary": "Create Topic",
+                "description": "Create a new Kafka topic",
+                "operationId": "create_topic_kafka_topics_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Topic"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/kafka/topics/{topic_name}": {
+            "delete": {
+                "tags": [
+                    "kafka",
+                    "kafka"
+                ],
+                "summary": "Delete Topic",
+                "description": "Delete a Kafka topic only if there are no active consumers",
+                "operationId": "delete_topic_kafka_topics__topic_name__delete",
+                "parameters": [
+                    {
+                        "name": "topic_name",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Topic Name"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "HTTPValidationError": {
+                "properties": {
+                    "detail": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "Topic": {
+                "properties": {
+                    "topic_name": {
+                        "type": "string",
+                        "title": "Topic Name"
+                    },
+                    "num_partitions": {
+                        "type": "integer",
+                        "title": "Num Partitions",
+                        "default": 1
+                    },
+                    "replication_factor": {
+                        "type": "integer",
+                        "title": "Replication Factor",
+                        "default": 1
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "topic_name"
+                ],
+                "title": "Topic"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
+            }
+        }
+    }
+}
