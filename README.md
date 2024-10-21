@@ -1,5 +1,7 @@
 # Message Queue and Event Bus (MQEB)
 
+![Architecture](/docs/MQEB.jpg)
+
 This Repository Holds the configuration and instruction for setting up a Message Queue and Event Bus (MQEB) utilizing Apache Kafka as the underlying software tool. MQEB has also been configured with SSL and it is integrated with a REST API for facilitating CRUD operations on topics.
 
 ## Description

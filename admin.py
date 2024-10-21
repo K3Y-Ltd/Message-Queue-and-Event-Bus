@@ -14,9 +14,9 @@ KAFKA_PASSWORD = os.getenv("KAFKA_PASSWORD")
 KAFKA_DOMAIN = os.getenv("KAFKA_DOMAIN")
 
 # SSL Configuration
-CARoot = "/Users/syrmos-k3y/kafka-ssl-baremetal/CARoot.pem"
-cert_file = "/Users/syrmos-k3y/kafka-ssl-baremetal/ca-cert"
-key_file = "/Users/syrmos-k3y/kafka-ssl-baremetal/ca-key"
+CARoot = "/path_to_the_certificates/kafka-ssl-baremetal/CARoot.pem"
+cert_file = "/path_to_the_certificates/kafka-ssl-baremetal/ca-cert"
+key_file = "/path_to_the_certificates/kafka-ssl-baremetal/ca-key"
 ssl_password = KAFKA_PASSWORD
 bootstrap_servers = [KAFKA_DOMAIN]
 
