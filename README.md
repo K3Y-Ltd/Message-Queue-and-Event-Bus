@@ -1,8 +1,12 @@
+![ACROSS](/docs/logo_across.jpg)
+
 # Message Queue and Event Bus (MQEB)
 
-![Architecture](/docs/MQEB.jpg)
+
 
 This Repository Holds the configuration and instruction for setting up a Message Queue and Event Bus (MQEB) utilizing Apache Kafka as the underlying software tool. MQEB has also been configured with SSL and it is integrated with a REST API for facilitating CRUD operations on topics.
+
+![Architecture](/docs/MQEB.jpg)
 
 ## Description
 MQEB is running inside an Ubuntu Contianer and all the necessary steps to create the associated certificates are performed during the docker build step.
@@ -98,3 +102,5 @@ docker push ghcr.io/k3y-ltd/apache-kafka-ssl:0.0.1
 (+)     iamge: ghcr.io/k3y-ltd/apache-kafka-ssl:0.0.1
 ```
 5) Run or build the container `docker-compose up -d`
+
+![K3Y Ltd.](/docs/logo_k3y.png)
