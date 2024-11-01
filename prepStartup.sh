@@ -2,8 +2,8 @@
 # Ensure all environment variables are properly configured.
 : "${KAFKA_HOME=/kafka_2.12-2.5.0}"
 : "${KEY_STORE=$KAFKA_HOME/ssl/server.keystore.jks}"
-: "${DOMAIN=www.mywebsite.com}"
-: "${PASSWORD=abc123def}"
+: "${DOMAIN=www.your_domain.com}"
+: "${PASSWORD=change_this_password}"
 
 echo -e "KAFKA_HOME=$KAFKA_HOME\n\
 KEY_STORE=$KEY_STORE\n\
