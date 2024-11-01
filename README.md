@@ -26,9 +26,10 @@ To deploy and create the associated certificates you must follow the steps:
 5) Copy the certificates that have been created from inside the container to the hostmachine in order to provide them to potential clients to connect
    1) ***NOTE***: Before you copy the certificates you must change the ca-cert into CARoot that follow PEM format which is compatible with python
       1) Attach into the running container `docker exec -it {kafkassl} bash`
-      2) Run the command to convert the ca-cert, `openssl x509 -in ca-cert -out CARoot.pem -outform PEM`
+      2) Run the command to convert the ca-cert, `openssl x509 -in ca-cert -out CARoot.pem -outform PEM` inside the docker's container directory `/kafka_2.11-2.2.0/ssl`
       3) Disconnect from the running container
    2) Copy the certificates out with the command: `docker cp <container_id>:/kafka_2.11-2.2.0/ssl /path/on/your/host/vm`
+6) Change the paths for the certificates inside the admin.py
 
 ## REST API
 In order to run the REST API the following criteria must be met:
